@@ -67,8 +67,9 @@ export function Navigation() {
             <Button 
               variant="outline" 
               className="bg-transparent border-white text-white hover:bg-white hover:text-brand-green hover:border-brand-green font-rubik font-light text-sm transition-colors duration-300"
+              asChild
             >
-              LOG IN
+              <Link to="/login">LOG IN</Link>
             </Button>
           </div>
         </div>

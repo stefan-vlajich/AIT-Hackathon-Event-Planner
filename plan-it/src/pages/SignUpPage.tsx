@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Navigation } from '@/components/layout/Navigation'
 import heroImage from '@/assets/images/home/hero.png'
 
 export function SignUpPage() {
@@ -87,14 +88,10 @@ export function SignUpPage() {
       </div>
 
       {/* Navigation */}
-      <div className="relative z-10 p-6">
-        <Link to="/" className="text-brand-green hover:text-white transition-colors font-rubik font-light text-lg">
-          ← Back to Home
-        </Link>
-      </div>
+      <Navigation />
 
       {/* Sign up form */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-6 lg:px-8 py-12">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-6 lg:px-8 py-12 mt-20">
         <Card className="w-full max-w-md bg-black/80 border-brand-green border-2 text-white">
           <CardHeader className="text-center">
             <CardTitle className="font-arial-black text-3xl text-brand-green mb-2">
