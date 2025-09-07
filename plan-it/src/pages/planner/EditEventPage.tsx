@@ -73,7 +73,7 @@ export function EditEventPage() {
 
   useEffect(() => {
     // In a real app, fetch event data from API
-    const eventData = mockEventData[eventId as keyof typeof mockEventData]
+    const eventData = mockEventData[eventId as unknown as keyof typeof mockEventData]
     if (eventData) {
       setEvent(eventData)
     } else {

@@ -13,7 +13,7 @@ import {
   Clock,
   MapPin,
   Users,
-  Camera,
+  X,
   Save,
   Eye,
   ArrowLeft,
@@ -90,7 +90,7 @@ export function CreateEventPage() {
 
     if (!formData.title.trim()) newErrors.title = 'Event title is required'
     if (!formData.description.trim()) newErrors.description = 'Event description is required'
-    if (!formData.categoryId) newErrors.categoryId = 'Please select an event category'
+    if (!formData.categoryId) (newErrors as any).categoryId = 'Please select an event category'
     if (!formData.eventDate) newErrors.eventDate = 'Event date is required'
     if (!formData.startTime) newErrors.startTime = 'Start time is required'
     if (!formData.endTime) newErrors.endTime = 'End time is required'

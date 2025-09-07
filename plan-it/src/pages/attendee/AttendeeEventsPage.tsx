@@ -5,8 +5,7 @@ import { Footer } from '@/components/layout/Footer'
 import { EventCard } from '@/components/events/EventCard'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
-import { Search, Filter, Calendar, MapPin, Users } from 'lucide-react'
+import { Search, Filter, Calendar } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 // Mock data - replace with real API data

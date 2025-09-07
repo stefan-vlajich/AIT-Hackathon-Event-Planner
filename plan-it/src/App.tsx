@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HomePage, EventsPage, HowItWorksPage, AboutPage, SignUpPage, LoginPage, EventDetailPage } from '@/pages'
-import { AttendeeProfilePage, AttendeeEventsPage, MyEventsPage, EventDetailPage as AttendeeEventDetailPage } from '@/pages/attendee'
+import { AttendeeProfilePage, AttendeeEventsPage, MyEventsPage } from '@/pages/attendee'
 import { PartnerProfilePage, PartnerEventsPage, PartnerDashboardPage, PartnerEventDetailPage } from '@/pages/partner'
 import { PlannerProfilePage, PlannerMyEventsPage, PlannerDashboardPage, PlannerPartnersPage, CreateEventPage, EditEventPage } from '@/pages/planner'
 

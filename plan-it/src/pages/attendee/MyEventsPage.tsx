@@ -4,9 +4,9 @@ import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { EventCard } from '@/components/events/EventCard'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, Clock, MapPin, Users, CheckCircle, XCircle, AlertCircle } from 'lucide-react'
+import { Calendar, Users, CheckCircle, XCircle, AlertCircle } from 'lucide-react'
 
 // Mock data for user's events
 const mockMyEvents = {

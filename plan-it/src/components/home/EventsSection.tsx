@@ -192,7 +192,7 @@ export function EventsSection() {
       </div>
 
       {/* Custom slow spin animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes spin-slow {
           from {
             transform: rotate(0deg);

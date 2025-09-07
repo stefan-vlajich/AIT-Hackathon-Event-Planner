@@ -6,7 +6,7 @@ import { useCurrentUser, useAuth } from '@/hooks/useSupabase'
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { userProfile, loading } = useCurrentUser()
+  const { userProfile } = useCurrentUser()
   const { signOut } = useAuth()
 
   const handleSignOut = async () => {

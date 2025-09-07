@@ -74,7 +74,7 @@ export function LoginPage() {
           navigate('/events') // Fallback to events page
         } else {
           // Redirect based on user type
-          const userType = userProfile?.usertype?.type?.toLowerCase()
+          const userType = (userProfile as any)?.usertype?.type?.toLowerCase()
           switch (userType) {
             case 'planner':
               navigate('/planner/dashboard')

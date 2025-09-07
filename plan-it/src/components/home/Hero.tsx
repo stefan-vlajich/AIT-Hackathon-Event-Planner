@@ -47,7 +47,7 @@ export function Hero() {
       </div>
 
       {/* Custom keyframes defined in style tag */}
-      <style jsx>{`
+      <style>{`
         @keyframes slideUp {
           0% {
             transform: translateY(60px);

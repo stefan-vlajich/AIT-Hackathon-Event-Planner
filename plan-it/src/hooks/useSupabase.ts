@@ -42,23 +42,23 @@ export function useEvents() {
       if (error) throw error
       setEvents(data || [])
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
   }
 
-  const createEvent = async (eventData) => {
+  const createEvent = async (eventData: any) => {
     try {
       const { data, error } = await supabase
         .from('event')
-        .insert([eventData])
+        .insert(eventData)
         .select()
 
       if (error) throw error
       return data[0]
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
       throw err
     }
   }
@@ -94,7 +94,7 @@ export function useEventCategories() {
       if (error) throw error
       setCategories(data || [])
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -142,7 +142,7 @@ export function useUsers() {
       if (error) throw error
       setUsers(data || [])
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -164,7 +164,7 @@ export function useAuth() {
   useEffect(() => {
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
+      setUser(session?.user as any ?? null)
       setLoading(false)
     })
 
@@ -172,14 +172,14 @@ export function useAuth() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
+      setUser(session?.user as any ?? null)
       setLoading(false)
     })
 
     return () => subscription.unsubscribe()
   }, [])
 
-  const signUp = async (email, password) => {
+  const signUp = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -187,7 +187,7 @@ export function useAuth() {
     return { data, error }
   }
 
-  const signIn = async (email, password) => {
+  const signIn = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -244,14 +244,14 @@ export function useCurrentUser() {
             type
           )
         `)
-        .eq('auth_user_id', user.id)
+        .eq('auth_user_id', (user as any)?.id)
         .eq('isactive', true)
         .single()
 
       if (error) throw error
       setUserProfile(data)
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
       setUserProfile(null)
     } finally {
       setLoading(false)
@@ -294,7 +294,7 @@ export function useUserEvents() {
       const { data: userProfile, error: profileError } = await supabase
         .from('app_users')
         .select('userid')
-        .eq('auth_user_id', user.id)
+        .eq('auth_user_id', (user as any)?.id)
         .eq('isactive', true)
         .single()
 
@@ -330,18 +330,18 @@ export function useUserEvents() {
             )
           )
         `)
-        .eq('attendee_userid', userProfile.userid)
+        .eq('attendee_userid', (userProfile as any)?.userid)
         .order('registrationdate', { ascending: false })
 
       if (regError) throw regError
 
       // Categorize events
       const now = new Date()
-      const upcoming = []
-      const past = []
-      const pending = []
+      const upcoming: any[] = []
+      const past: any[] = []
+      const pending: any[] = []
 
-      registrations?.forEach(reg => {
+      registrations?.forEach((reg: any) => {
         const event = reg.event
         if (!event) return
 
@@ -364,7 +364,7 @@ export function useUserEvents() {
 
       setUserEvents({ upcoming, past, pending })
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
       setUserEvents({ upcoming: [], past: [], pending: [] })
     } finally {
       setLoading(false)
@@ -373,7 +373,7 @@ export function useUserEvents() {
 
   const updateRegistrationStatus = async (registrationId: string, status: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('eventregistration')
         .update({ registrationstatus: status })
         .eq('registrationid', registrationId)
@@ -383,7 +383,7 @@ export function useUserEvents() {
       // Refetch user events to update the UI
       await fetchUserEvents()
     } catch (err) {
-      setError(err.message)
+      setError(err instanceof Error ? err.message : 'An error occurred')
       throw err
     }
   }
