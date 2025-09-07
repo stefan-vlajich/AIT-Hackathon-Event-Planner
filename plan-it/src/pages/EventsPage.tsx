@@ -8,6 +8,10 @@ import { ChevronDown } from 'lucide-react'
 export function EventsPage() {
   const { events, loading, error } = useEvents()
   const { categories } = useEventCategories()
+  
+  // Type assertions to help TypeScript understand the data structure
+  const typedEvents = events as any[]
+  const typedCategories = categories as any[]
   const [selectedCategory, setSelectedCategory] = useState('All Events')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -27,10 +31,10 @@ export function EventsPage() {
   }, [])
 
   // Filter events based on selected category
-  const filteredEvents = events.filter(event => {
+  const filteredEvents = typedEvents.filter(event => {
     if (selectedCategory === 'All Events') return true
     // For now, we'll filter by category ID since we don't have the join
-    const categoryId = categories.find(cat => cat.name === selectedCategory)?.categoryid
+    const categoryId = typedCategories.find(cat => cat.name === selectedCategory)?.categoryid
     return event.eventcategory_categoryid === categoryId
   })
 
@@ -83,7 +87,7 @@ export function EventsPage() {
                       >
                         All Events
                       </button>
-                      {categories.map((category) => (
+                      {typedCategories.map((category) => (
                         <button
                           key={category.categoryid}
                           onClick={() => {
@@ -117,7 +121,7 @@ export function EventsPage() {
           ) : filteredEvents.length === 0 ? (
             <div className="flex justify-center items-center h-96">
               <div className="text-white text-xl">No events found</div>
-              <div className="text-white text-sm mt-2">Total events: {events.length}</div>
+              <div className="text-white text-sm mt-2">Total events: {typedEvents.length}</div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
@@ -151,7 +155,7 @@ export function EventsPage() {
                       
                       {/* Category Name */}
                       {(() => {
-                        const category = categories.find(cat => cat.categoryid === event.eventcategory_categoryid)
+                        const category = typedCategories.find(cat => cat.categoryid === event.eventcategory_categoryid)
                         return category && (
                           <p className="text-black text-sm font-medium">
                             {category.name}
@@ -190,6 +194,3 @@ export function EventsPage() {
     </div>
   )
 }
-
-
-
