@@ -1,7 +1,6 @@
 export { HomePage } from './HomePage'
 export { EventsPage } from './EventsPage'
-export { PlannerPage } from './PlannerPage'
-export { PartnerPage } from './PartnerPage'
+export { HowItWorksPage } from './HowItWorksPage'
 export { AboutPage } from './AboutPage'
 export { SignUpPage } from './SignUpPage'
 export { LoginPage } from './LoginPage'

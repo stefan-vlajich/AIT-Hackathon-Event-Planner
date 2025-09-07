@@ -28,13 +28,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/planner" className="text-gray-400 hover:text-white transition-colors">
-                  Event Planner
-                </Link>
-              </li>
-              <li>
-                <Link to="/partner" className="text-gray-400 hover:text-white transition-colors">
-                  Become a Partner
+                <Link to="/how-it-works" className="text-gray-400 hover:text-white transition-colors">
+                  How It Works
                 </Link>
               </li>
               <li>

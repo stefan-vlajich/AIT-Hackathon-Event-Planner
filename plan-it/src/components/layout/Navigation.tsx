@@ -43,16 +43,10 @@ export function Navigation() {
               EVENTS
             </Link>
             <Link 
-              to="/planner" 
+              to="/how-it-works" 
               className="text-white font-rubik font-light text-sm lg:text-base hover:text-brand-green transition-colors duration-300 py-2 px-3 rounded"
             >
-              PLANNER
-            </Link>
-            <Link 
-              to="/partner" 
-              className="text-white font-rubik font-light text-sm lg:text-base hover:text-brand-green transition-colors duration-300 py-2 px-3 rounded"
-            >
-              PARTNER
+              HOW IT WORKS
             </Link>
             <Link 
               to="/about" 
@@ -86,18 +80,11 @@ export function Navigation() {
                 EVENTS
               </Link>
               <Link 
-                to="/planner" 
+                to="/how-it-works" 
                 className="text-white font-rubik font-light hover:text-brand-green transition-colors duration-300 py-2 px-3 rounded"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                PLANNER
-              </Link>
-              <Link 
-                to="/partner" 
-                className="text-white font-rubik font-light hover:text-brand-green transition-colors duration-300 py-2 px-3 rounded"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                PARTNER
+                HOW IT WORKS
               </Link>
               <Link 
                 to="/about" 
