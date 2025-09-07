@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logo from '@/assets/images/logo.png'
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -9,6 +10,17 @@ export function Navigation() {
     <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="Plan It Logo" 
+                className="h-8 md:h-10 w-auto"
+              />
+            </Link>
+          </div>
+
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
