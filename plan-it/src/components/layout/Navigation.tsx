@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '@/assets/images/logo.png'
+import logo from '../../assets/images/logo.png'
 import { useCurrentUser, useAuth } from '@/hooks/useSupabase'
 
 export function Navigation() {
@@ -71,6 +71,11 @@ export function Navigation() {
                 src={logo} 
                 alt="Plan It Logo" 
                 className="h-8 md:h-10 w-auto"
+                onError={(e) => {
+                  console.error('Logo failed to load:', logo)
+                  e.currentTarget.style.border = '2px solid red'
+                }}
+                onLoad={() => console.log('Logo loaded successfully:', logo)}
               />
             </Link>
           </div>

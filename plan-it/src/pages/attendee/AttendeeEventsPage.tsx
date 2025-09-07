@@ -233,22 +233,10 @@ export function AttendeeEventsPage() {
                   whileHover={{ scale: 1.02, y: -5 }}
                   style={{ transition: "all 0.3s ease" }}
                 >
-                  <Link 
-                    to={`/event/${event.id}`}
-                    className="block"
-                  >
-                    <div className="w-full h-48 rounded-t-lg overflow-hidden bg-gray-200 mb-0">
-                      <img
-                        src={event.eventImageURL}
-                        alt={event.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                    <EventCard
-                      event={event}
-                      linkTo={`/event/${event.id}`}
-                    />
-                  </Link>
+                  <EventCard
+                    event={event}
+                    linkTo={`/event/${event.id}`}
+                  />
                 </motion.div>
               ))}
             </motion.div>
