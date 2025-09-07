@@ -256,7 +256,11 @@ export function PartnerEventsPage() {
                 const daysUntilDeadline = getDaysUntilDeadline(event.responseDeadline)
                 
                 return (
-                  <div key={event.id} className="relative">
+                  <Link 
+                    key={event.id} 
+                    to={`/partner/event/${event.id}`}
+                    className="block relative"
+                  >
                     {/* Enhanced Event Card with Partner-specific Info */}
                     <Card className="bg-black/80 border-brand-green border hover:border-brand-green/80 transition-all duration-300 hover:shadow-lg hover:shadow-brand-green/20 cursor-pointer group">
                       {/* Event Image */}
@@ -288,7 +292,7 @@ export function PartnerEventsPage() {
                       )}
                       
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-xl font-arial-black text-brand-green group-hover:text-white transition-colors line-clamp-2">
+                        <CardTitle className="text-xl font-arial-black text-brand-green group-hover:text-white transition-colors line-clamp-2 cursor-pointer">
                           {event.title}
                         </CardTitle>
                         <p className="text-gray-300 text-sm font-rubik">{event.organizationName}</p>
@@ -349,23 +353,18 @@ export function PartnerEventsPage() {
                         
                         {/* Action */}
                         <div className="pt-2 border-t border-gray-700">
-                          <Link 
-                            to={`/partner/event/${event.id}`}
-                            className="block"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="text-brand-green text-sm font-medium font-rubik">
-                                Submit Proposal →
-                              </span>
-                              <Badge className="bg-brand-green/20 text-brand-green border-brand-green text-xs">
-                                Open
-                              </Badge>
-                            </div>
-                          </Link>
+                          <div className="flex items-center justify-between">
+                            <span className="text-brand-green text-sm font-medium font-rubik">
+                              Submit Proposal →
+                            </span>
+                            <Badge className="bg-brand-green/20 text-brand-green border-brand-green text-xs">
+                              Open
+                            </Badge>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
-                  </div>
+                  </Link>
                 )
               })}
             </div>

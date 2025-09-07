@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { EventCard } from '@/components/events/EventCard'
@@ -112,9 +113,14 @@ export function MyEventsPage() {
     const StatusIcon = status.icon
 
     return (
-      <div key={event.id} className="relative">
+      <Link 
+        key={event.id} 
+        to={`/event/${event.id}`}
+        className="block relative"
+      >
         <EventCard
           event={event}
+          linkTo={`/event/${event.id}`}
         />
         {/* Status Badge Overlay */}
         <div className="absolute top-3 left-3 z-10">
@@ -123,7 +129,7 @@ export function MyEventsPage() {
             {status.text}
           </Badge>
         </div>
-      </div>
+      </Link>
     )
   }
 
