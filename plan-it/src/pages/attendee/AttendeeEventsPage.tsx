@@ -155,10 +155,16 @@ export function AttendeeEventsPage() {
           {filteredEvents.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredEvents.map(event => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                />
+                <Link 
+                  key={event.id} 
+                  to={`/event/${event.id}`}
+                  className="block"
+                >
+                  <EventCard
+                    event={event}
+                    linkTo={`/event/${event.id}`}
+                  />
+                </Link>
               ))}
             </div>
           ) : (
@@ -190,10 +196,16 @@ export function AttendeeEventsPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {mockEvents.slice(0, 3).map(event => (
-                <EventCard
-                  key={`trending-${event.id}`}
-                  event={event}
-                />
+                <Link 
+                  key={`trending-${event.id}`} 
+                  to={`/event/${event.id}`}
+                  className="block"
+                >
+                  <EventCard
+                    event={event}
+                    linkTo={`/event/${event.id}`}
+                  />
+                </Link>
               ))}
             </div>
           </div>

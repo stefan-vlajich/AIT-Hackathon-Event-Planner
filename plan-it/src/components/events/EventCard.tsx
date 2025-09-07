@@ -45,14 +45,20 @@ export function EventCard({ event, linkTo }: EventCardProps) {
       )}
       
       <CardHeader className="pb-3">
-        <Link 
-          to={`/event/${event.id}`}
-          className="block hover:no-underline"
-        >
+        {linkTo ? (
           <CardTitle className="text-xl font-arial-black text-brand-green hover:text-white transition-colors line-clamp-2 cursor-pointer">
             {event.title}
           </CardTitle>
-        </Link>
+        ) : (
+          <Link 
+            to={`/event/${event.id}`}
+            className="block hover:no-underline"
+          >
+            <CardTitle className="text-xl font-arial-black text-brand-green hover:text-white transition-colors line-clamp-2 cursor-pointer">
+              {event.title}
+            </CardTitle>
+          </Link>
+        )}
         <p className="text-gray-300 text-sm font-rubik">{event.organizationName}</p>
       </CardHeader>
       
