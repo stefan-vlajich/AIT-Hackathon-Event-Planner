@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 import { Button } from '@/components/ui/button'
 import { useEvents, useEventCategories } from '@/hooks/useSupabase'
 import { ChevronDown } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export function EventsPage() {
   const { events, loading, error } = useEvents()
@@ -44,37 +45,57 @@ export function EventsPage() {
       
       {/* Hero Section */}
       <section className="bg-black pb-16">
-        <div className="w-full">
-          <div className="text-left py-16 pl-8">
-            <h1 className="font-arial-black text-5xl md:text-7xl lg:text-8xl font-black text-brand-green uppercase leading-tight tracking-tighter">
-              ALL
-              <br />
-              EVENTS
-            </h1>
-          </div>
-        </div>
+        <motion.div 
+          className="w-full text-left py-16 pl-8"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="font-arial-black text-5xl md:text-7xl lg:text-8xl font-black text-brand-green uppercase leading-tight tracking-tighter">
+            ALL
+            <br />
+            EVENTS
+          </h1>
+        </motion.div>
       </section>
 
       {/* Events Grid */}
       <section className="bg-black pb-16">
         <div className="px-8">
           {/* Category Filter Dropdown */}
-          <div className="flex justify-center mb-12">
+          <motion.div 
+            className="flex justify-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <div className="relative" ref={dropdownRef}>
-              <Button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="bg-transparent border-white text-white hover:bg-white hover:text-black font-semibold px-8 py-4 text-lg rounded-none flex items-center gap-3"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {selectedCategory}
-                <ChevronDown className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </Button>
+                <Button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="bg-transparent border-white text-white hover:bg-white hover:text-black font-semibold px-8 py-4 text-lg rounded-none flex items-center gap-3"
+                >
+                  {selectedCategory}
+                  <ChevronDown className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </Button>
+              </motion.div>
               
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-white border border-black shadow-xl z-50 min-w-96">
+                <motion.div 
+                  className="absolute top-full left-0 mt-2 bg-white border border-black shadow-xl z-50 min-w-96"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <div className="p-6">
                     <h3 className="font-rubik font-semibold text-black text-lg mb-4">Filter by Category</h3>
                     <div className="grid grid-cols-3 gap-3">
-                      <button
+                      <motion.button
                         onClick={() => {
                           setSelectedCategory('All Events')
                           setIsDropdownOpen(false)
@@ -84,11 +105,13 @@ export function EventsPage() {
                             ? 'bg-brand-green text-black'
                             : 'bg-gray-100 text-black hover:bg-gray-200'
                         }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         All Events
-                      </button>
-                      {typedCategories.map((category) => (
-                        <button
+                      </motion.button>
+                      {typedCategories.map((category, index) => (
+                        <motion.button
                           key={category.categoryid}
                           onClick={() => {
                             setSelectedCategory(category.name)
@@ -99,34 +122,67 @@ export function EventsPage() {
                               ? 'bg-brand-green text-black'
                               : 'bg-gray-100 text-black hover:bg-gray-200'
                           }`}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           {category.name}
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
-          </div>
+          </motion.div>
           
           {loading ? (
-            <div className="flex justify-center items-center h-96">
+            <motion.div 
+              className="flex justify-center items-center h-96"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="text-white text-xl">Loading events...</div>
-            </div>
+            </motion.div>
           ) : error ? (
-            <div className="flex justify-center items-center h-96">
+            <motion.div 
+              className="flex justify-center items-center h-96"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="text-red-400 text-xl">Error loading events: {error}</div>
-            </div>
+            </motion.div>
           ) : filteredEvents.length === 0 ? (
-            <div className="flex justify-center items-center h-96">
+            <motion.div 
+              className="flex justify-center items-center h-96"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="text-white text-xl">No events found</div>
               <div className="text-white text-sm mt-2">Total events: {typedEvents.length}</div>
-            </div>
+            </motion.div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
-              {filteredEvents.map((event) => (
-                <div key={event.eventid} className="bg-white border border-black rounded-lg overflow-hidden">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              {filteredEvents.map((event, index) => (
+                <motion.div 
+                  key={event.eventid} 
+                  className="bg-white border border-black rounded-lg overflow-hidden"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  style={{ transition: "all 0.3s ease" }}
+                >
                   {/* 40% - Image section */}
                   <div className="h-2/5 bg-gray-300 flex items-center justify-center">
                     <div className="text-gray-500 text-sm font-medium">
@@ -173,19 +229,24 @@ export function EventsPage() {
                       
                       {/* Buy Tickets Button */}
                       <div className="mt-6">
-                        <Button 
-                          size="lg"
-                          variant="outline"
-                          className="w-auto px-8 bg-transparent border-black text-black hover:bg-black hover:text-white font-semibold py-6 rounded-none"
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          Buy Tickets
-                        </Button>
+                          <Button 
+                            size="lg"
+                            variant="outline"
+                            className="w-auto px-8 bg-transparent border-black text-black hover:bg-black hover:text-white font-semibold py-6 rounded-none"
+                          >
+                            Buy Tickets
+                          </Button>
+                        </motion.div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

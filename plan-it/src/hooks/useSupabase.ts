@@ -265,3 +265,134 @@ export function useCurrentUser() {
     refetch: fetchUserProfile
   }
 }
+
+// Hook for user's event registrations
+export function useUserEvents() {
+  const [userEvents, setUserEvents] = useState<any>({
+    upcoming: [],
+    past: [],
+    pending: []
+  })
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      fetchUserEvents()
+    } else {
+      setUserEvents({ upcoming: [], past: [], pending: [] })
+      setLoading(false)
+    }
+  }, [user])
+
+  const fetchUserEvents = async () => {
+    try {
+      setLoading(true)
+      
+      // Get user's profile first
+      const { data: userProfile, error: profileError } = await supabase
+        .from('app_users')
+        .select('userid')
+        .eq('auth_user_id', user.id)
+        .eq('isactive', true)
+        .single()
+
+      if (profileError) throw profileError
+
+      // Get user's event registrations
+      const { data: registrations, error: regError } = await supabase
+        .from('eventregistration')
+        .select(`
+          registrationid,
+          registrationstatus,
+          registrationdate,
+          event:event_eventid (
+            eventid,
+            title,
+            description,
+            eventdate,
+            starttime,
+            endtime,
+            venueaddress,
+            city,
+            state,
+            country,
+            eventimageurl,
+            eventstatus,
+            maxattendees,
+            currentattendeecount,
+            createdat,
+            eventcategory_categoryid,
+            organization:organization_organizationid (
+              organizationid,
+              name
+            )
+          )
+        `)
+        .eq('attendee_userid', userProfile.userid)
+        .order('registrationdate', { ascending: false })
+
+      if (regError) throw regError
+
+      // Categorize events
+      const now = new Date()
+      const upcoming = []
+      const past = []
+      const pending = []
+
+      registrations?.forEach(reg => {
+        const event = reg.event
+        if (!event) return
+
+        const eventDate = new Date(event.eventdate)
+        const eventWithStatus = {
+          ...event,
+          registrationStatus: reg.registrationstatus,
+          registrationDate: reg.registrationdate,
+          organizationName: event.organization?.name || 'Unknown Organization'
+        }
+
+        if (reg.registrationstatus === 'Pending') {
+          pending.push(eventWithStatus)
+        } else if (eventDate >= now) {
+          upcoming.push(eventWithStatus)
+        } else {
+          past.push(eventWithStatus)
+        }
+      })
+
+      setUserEvents({ upcoming, past, pending })
+    } catch (err) {
+      setError(err.message)
+      setUserEvents({ upcoming: [], past: [], pending: [] })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const updateRegistrationStatus = async (registrationId: string, status: string) => {
+    try {
+      const { error } = await supabase
+        .from('eventregistration')
+        .update({ registrationstatus: status })
+        .eq('registrationid', registrationId)
+
+      if (error) throw error
+      
+      // Refetch user events to update the UI
+      await fetchUserEvents()
+    } catch (err) {
+      setError(err.message)
+      throw err
+    }
+  }
+
+  return {
+    userEvents,
+    loading,
+    error,
+    refetch: fetchUserEvents,
+    updateRegistrationStatus
+  }
+}
