@@ -110,7 +110,7 @@ export function EventsSection() {
             {sampleEvents.map((event, index) => (
               <div 
                 key={event.id} 
-                className={`bg-white h-[36rem] border border-black transition-all duration-700 hover:scale-105 transform
+                className={`bg-white h-[28rem] border border-black transition-all duration-700 hover:scale-105 transform
                            ${isVisible 
                              ? 'translate-y-0 opacity-100' 
                              : 'translate-y-10 opacity-0'
