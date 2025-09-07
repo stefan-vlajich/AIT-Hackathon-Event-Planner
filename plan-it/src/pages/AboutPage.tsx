@@ -1,55 +1,35 @@
+import React from 'react'
 import { Navigation } from '@/components/layout/Navigation'
+import { Footer } from '@/components/layout/Footer'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { User, Code, Handshake, Star } from 'lucide-react'
 
 export function AboutPage() {
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "Founder & CEO",
-      bio: "10+ years in event management, passionate about creating memorable experiences",
-      emoji: "👩‍💼"
+      firstName: "JAI",
+      lastName: "BENIPAL",
+      icon: User
     },
     {
-      name: "Michael Chen", 
-      role: "Head of Technology",
-      bio: "Full-stack developer with expertise in building scalable event platforms",
-      emoji: "👨‍💻"
+      firstName: "CHRISTIAN",
+      lastName: "BLANKENBACK", 
+      icon: Code
     },
     {
-      name: "Emily Rodriguez",
-      role: "Partner Relations",
-      bio: "Connecting event organizers with the best vendors and service providers",
-      emoji: "🤝"
+      firstName: "SAM",
+      lastName: "PERKINS",
+      icon: Handshake
     },
     {
-      name: "David Kim",
-      role: "Customer Success",
-      bio: "Ensuring every event planned through our platform exceeds expectations",
-      emoji: "⭐"
-    }
-  ]
-
-  const values = [
-    {
-      title: "Innovation",
-      description: "We continuously evolve our platform to meet changing event needs",
-      icon: "💡"
+      firstName: "EASHAN",
+      lastName: "UPPAL",
+      icon: Star
     },
     {
-      title: "Quality",
-      description: "Every partner is vetted to ensure exceptional service quality",
-      icon: "✨"
-    },
-    {
-      title: "Community",
-      description: "Building connections between event organizers and trusted vendors",
-      icon: "🌟"
-    },
-    {
-      title: "Simplicity",
-      description: "Making event planning accessible and enjoyable for everyone",
-      icon: "🎯"
+      firstName: "STEFAN",
+      lastName: "VLAJICH",
+      icon: User
     }
   ]
 
@@ -61,128 +41,106 @@ export function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navigation />
       
-      {/* Page Header */}
-      <div className="pt-20 pb-12 bg-gradient-to-r from-indigo-600 to-purple-600">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="font-arial-black text-4xl md:text-6xl text-white mb-4">
+      {/* Hero Section */}
+      <section className="bg-black pb-16">
+        <div className="w-full">
+          <div className="text-left py-16 pl-8">
+            <h1 className="font-arial-black text-5xl md:text-7xl lg:text-8xl font-black text-brand-green uppercase leading-tight tracking-tighter">
               ABOUT
+              <br />
+              PLAN-IT
             </h1>
-            <p className="font-rubik font-light text-xl text-white/90 max-w-3xl mx-auto">
-              We're on a mission to make event planning simple, enjoyable, and successful for everyone
-            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      {/* Story Section */}
+      <section className="relative py-20 overflow-hidden" style={{ backgroundColor: '#73F64B' }}>
+        {/* Creative Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full" style={{ 
+            backgroundImage: `conic-gradient(from 0deg at 50% 50%, #000000, transparent, #000000, transparent)`,
+            backgroundSize: '100px 100px'
+          }}></div>
+        </div>
         
-        {/* Our Story */}
-        <div className="mb-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-rubik text-3xl font-semibold text-gray-800 mb-6">
-              Our Story
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-arial-black text-5xl md:text-7xl lg:text-8xl font-black text-black mb-8 leading-tight tracking-tighter">
+              OUR STORY
             </h2>
-            <p className="font-rubik font-light text-lg text-gray-600 mb-8 leading-relaxed">
-              plan-it was born from the frustration of planning events the traditional way. Too many spreadsheets, 
-              endless phone calls, and the constant worry of missing important details. We believed there had to be 
-              a better way to bring people together and create memorable experiences.
-            </p>
-            <p className="font-rubik font-light text-lg text-gray-600 leading-relaxed">
-              Today, we're proud to be the platform where events begin - connecting organizers with trusted partners, 
-              streamlining the planning process, and ensuring every celebration is exactly what you envisioned.
-            </p>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-arial-black text-3xl md:text-4xl text-brand-green mb-2">
-                  {stat.number}
-                </div>
-                <div className="font-rubik text-gray-600">
-                  {stat.label}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative">
+                {/* Background Shape */}
+                <div className="absolute -inset-8 bg-black/5 rounded-3xl transform -rotate-1"></div>
+                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-12 border border-black/20 shadow-xl">
+                  <p className="font-rubik text-lg md:text-xl text-black leading-relaxed mb-8">
+                    plan-it was born from the frustration of planning events the traditional way. Too many spreadsheets, 
+                    endless phone calls, and the constant worry of missing important details. We believed there had to be 
+                    a better way to bring people together and create memorable experiences.
+                  </p>
+                  <p className="font-rubik text-lg md:text-xl text-black leading-relaxed">
+                    Today, we're proud to be the platform where events begin - connecting organizers with trusted partners, 
+                    streamlining the planning process, and ensuring every celebration is exactly what you envisioned.
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Our Values */}
-        <div className="mb-16">
-          <h2 className="font-rubik text-3xl font-semibold text-gray-800 mb-8 text-center">
-            Our Values
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="text-4xl mb-3">{value.icon}</div>
-                  <CardTitle className="font-rubik text-xl">{value.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-rubik font-light text-gray-600">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* Team Section - Creative Layout */}
+      <section className="relative py-32 bg-black overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full" style={{
+            backgroundImage: `linear-gradient(45deg, #73F64B 1px, transparent 1px),
+                             linear-gradient(-45deg, #73F64B 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}></div>
         </div>
 
-        {/* Team */}
-        <div className="mb-16">
-          <h2 className="font-rubik text-3xl font-semibold text-gray-800 mb-8 text-center">
-            Meet Our Team
+        <div className="relative max-w-7xl mx-auto text-center px-6 lg:px-8">
+          <h2 className="font-arial-black text-5xl md:text-7xl lg:text-8xl font-black text-brand-green mb-16 leading-tight tracking-tighter">
+            MEET OUR TEAM
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Team Grid */}
+          <div className="grid grid-cols-5 gap-8 mt-16">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="text-5xl mb-3">{member.emoji}</div>
-                  <CardTitle className="font-rubik text-lg">{member.name}</CardTitle>
-                  <CardDescription className="font-rubik font-medium text-brand-green">
-                    {member.role}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-rubik font-light text-sm text-gray-600">
-                    {member.bio}
-                  </p>
-                </CardContent>
-              </Card>
+              <div key={index} className="relative group">
+                {/* Background Elements */}
+                <div className="absolute -inset-2 bg-brand-green/10 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300"></div>
+                
+                <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-brand-green/20 group-hover:shadow-brand-green/20 transition-shadow duration-300 h-full flex flex-col">
+                  <div className="text-center flex flex-col h-full">
+                    <div className="relative mx-auto mb-6 w-20 h-20">
+                      <div className="w-20 h-20 rounded-full border-4 border-brand-green/30 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: '#73F64B' }}>
+                          {React.createElement(member.icon, { className: "w-10 h-10 text-black" })}
+                        </div>
+                      </div>
+                      {/* Floating Elements */}
+                      <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-brand-green/40"></div>
+                      <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-brand-green/30"></div>
+                    </div>
+                    <h3 className="text-black font-bold text-lg uppercase leading-tight flex-grow flex flex-col items-center justify-center">
+                      <span>{member.firstName}</span>
+                      <span>{member.lastName}</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Contact CTA */}
-        <div className="text-center">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-brand-green to-green-400 text-white">
-            <CardContent className="p-12">
-              <h3 className="font-rubik text-3xl font-semibold mb-4">
-                Ready to plan your next event?
-              </h3>
-              <p className="font-rubik font-light text-lg mb-8 max-w-2xl mx-auto">
-                Join thousands of successful event organizers who trust plan-it to bring their visions to life
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-green font-rubik">
-                  Start Planning
-                </Button>
-                <Button variant="secondary" size="lg" className="bg-white text-brand-green hover:bg-gray-100 font-rubik">
-                  Contact Us
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+      <Footer />
     </div>
   )
 }
