@@ -201,7 +201,7 @@ export function PartnerEventsPage() {
                   size="sm"
                   className={selectedService === service 
                     ? "bg-brand-green text-black hover:bg-green-400" 
-                    : "border-gray-600 text-gray-300 hover:bg-gray-700"
+                    : "bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                   }
                 >
                   {service}
@@ -241,7 +241,7 @@ export function PartnerEventsPage() {
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                  className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                 >
                   Advanced Filters
                 </Button>
@@ -384,7 +384,7 @@ export function PartnerEventsPage() {
                   setSelectedBudget('Any Budget')
                 }}
                 variant="outline"
-                className="border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
               >
                 Clear Filters
               </Button>

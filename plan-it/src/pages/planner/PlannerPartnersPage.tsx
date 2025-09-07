@@ -398,7 +398,7 @@ export function PlannerPartnersPage() {
             </div>
             <Button 
               variant="outline" 
-              className="border-gray-600 text-gray-300 hover:bg-gray-700"
+              className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
             >
               <Filter className="w-4 h-4 mr-2" />
               Filters

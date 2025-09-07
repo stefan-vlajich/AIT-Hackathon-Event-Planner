@@ -155,7 +155,7 @@ export function AttendeeEventsPage() {
                     size="sm"
                     className={selectedCategory === category 
                       ? "bg-brand-green text-black hover:bg-green-400 font-semibold" 
-                      : "border-white/20 text-white hover:bg-white/10 hover:border-brand-green backdrop-blur-sm bg-white/5"
+                      : "border-gray-800 text-white bg-gray-900 hover:bg-gray-800 hover:border-brand-green backdrop-blur-sm"
                     }
                   >
                     {category}
@@ -207,7 +207,7 @@ export function AttendeeEventsPage() {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="border-white/20 text-white hover:bg-white/10 hover:border-brand-green backdrop-blur-sm bg-white/5"
+                    className="border-gray-800 text-white bg-gray-900 hover:bg-gray-800 hover:border-brand-green backdrop-blur-sm"
                   >
                     More Filters
                   </Button>
@@ -237,6 +237,13 @@ export function AttendeeEventsPage() {
                     to={`/event/${event.id}`}
                     className="block"
                   >
+                    <div className="w-full h-48 rounded-t-lg overflow-hidden bg-gray-200 mb-0">
+                      <img
+                        src={event.eventImageURL}
+                        alt={event.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
                     <EventCard
                       event={event}
                       linkTo={`/event/${event.id}`}

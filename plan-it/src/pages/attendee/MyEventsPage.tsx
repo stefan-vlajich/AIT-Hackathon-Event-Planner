@@ -270,19 +270,19 @@ export function MyEventsPage() {
                   <div className="flex space-x-4">
                     <Button
                       variant="outline"
-                      className="border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                      className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                     >
                       Export Calendar
                     </Button>
                     <Button
                       variant="outline"
-                      className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                      className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                     >
                       Print Tickets
                     </Button>
                     <Button
                       variant="outline"
-                      className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                      className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                     >
                       Share Events
                     </Button>

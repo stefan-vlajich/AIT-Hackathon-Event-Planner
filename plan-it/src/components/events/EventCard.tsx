@@ -114,8 +114,8 @@ export function EventCard({ event, linkTo }: EventCardProps) {
         {/* Status Indicator */}
         <div className="pt-2 border-t border-gray-700">
           <div className="flex items-center justify-between">
-            <span className="text-brand-green text-sm font-medium font-rubik">
-              View Details →
+            <span className="text-brand-green text-sm font-medium font-rubik cursor-pointer hover:bg-gray-900 hover:border-gray-800 hover:text-white px-3 py-1 rounded transition-colors">
+              View
             </span>
             {event.maxAttendees && event.currentAttendeeCount >= event.maxAttendees ? (
               <Badge variant="destructive" className="text-xs">

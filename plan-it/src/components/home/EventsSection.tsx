@@ -26,49 +26,57 @@ export function EventsSection() {
       id: 1,
       artistName: "Tech Innovation Summit",
       date: "Oct 15, 2025",
-      place: "San Francisco, CA"
+      place: "San Francisco, CA",
+      imageURL: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400"
     },
     {
       id: 2,
       artistName: "Art & Culture Festival",
       date: "Oct 22, 2025",
-      place: "New York, NY"
+      place: "New York, NY",
+      imageURL: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400"
     },
     {
       id: 3,
       artistName: "Startup Pitch Night",
       date: "Nov 5, 2025",
-      place: "Austin, TX"
+      place: "Austin, TX",
+      imageURL: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400"
     },
     {
       id: 4,
       artistName: "Food & Wine Expo",
       date: "Nov 12, 2025",
-      place: "Napa Valley, CA"
+      place: "Napa Valley, CA",
+      imageURL: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
     },
     {
       id: 5,
       artistName: "Music & Beats Conference",
       date: "Nov 18, 2025",
-      place: "Nashville, TN"
+      place: "Nashville, TN",
+      imageURL: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400"
     },
     {
       id: 6,
       artistName: "Wellness Retreat Weekend",
       date: "Dec 3, 2025",
-      place: "Sedona, AZ"
+      place: "Sedona, AZ",
+      imageURL: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400"
     },
     {
       id: 7,
       artistName: "Gaming Convention",
       date: "Dec 10, 2025",
-      place: "Los Angeles, CA"
+      place: "Los Angeles, CA",
+      imageURL: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400"
     },
     {
       id: 8,
       artistName: "Environmental Action Summit",
       date: "Dec 15, 2025",
-      place: "Seattle, WA"
+      place: "Seattle, WA",
+      imageURL: "https://plus.unsplash.com/premium_photo-1663951252608-ab1fdec72fbe?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZW52aXJvbm1lbnR8ZW58MHx8MHx8fDA%3D"
     }
   ]
 
@@ -111,9 +119,17 @@ export function EventsSection() {
               >
                 {/* 40% - Image section */}
                 <div className="h-2/5 bg-gray-300 flex items-center justify-center relative overflow-hidden group">
-                  <div className="text-gray-500 text-sm font-medium z-10">
-                    Image Placeholder
-                  </div>
+                  {event.imageURL ? (
+                    <img
+                      src={event.imageURL}
+                      alt={event.artistName}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="text-gray-500 text-sm font-medium z-10">
+                      Image Placeholder
+                    </div>
+                  )}
                   {/* Animated overlay on hover */}
                   <div className="absolute inset-0 bg-brand-green/20 transform scale-0 group-hover:scale-100 transition-transform duration-300"></div>
                 </div>
@@ -145,7 +161,7 @@ export function EventsSection() {
                       <Button 
                         size="lg"
                         variant="outline"
-                        className="w-auto px-8 bg-transparent border-black text-black hover:bg-black hover:text-white font-semibold py-6 rounded-none transform hover:scale-110 transition-all duration-300"
+                        className="w-auto px-8 bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green font-semibold py-6 rounded-none transform hover:scale-110 transition-all duration-300"
                       >
                         Buy Tickets
                       </Button>
@@ -161,7 +177,7 @@ export function EventsSection() {
             <Button 
               size="lg"
               variant="outline"
-              className={`bg-transparent border-white text-white hover:bg-white hover:text-black font-semibold px-20 py-6 text-xl rounded-none
+              className={`bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green font-semibold px-20 py-6 text-xl rounded-none
                          transform hover:scale-110 transition-all duration-300 ${
                            isVisible 
                              ? 'translate-y-0 opacity-100' 

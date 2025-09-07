@@ -109,8 +109,8 @@ export function AboutPage() {
                       </div>
                     </div>
                     <h3 className="text-black font-bold text-lg uppercase leading-tight">
-                      <span>{member.firstName}</span>
-                      <span>{member.lastName}</span>
+                      <span className="block">{member.firstName}</span>
+                      <span className="block">{member.lastName}</span>
                     </h3>
                   </div>
                 </div>
