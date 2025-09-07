@@ -1,13 +1,17 @@
 import { Navigation } from '@/components/layout/Navigation'
+import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/home/Hero'
-import { HeroImageInstructions } from '@/components/home/HeroImageInstructions'
+import { EventsSection } from '@/components/home/EventsSection'
+import { ExploreSection } from '@/components/home/ExploreSection'
 
 export function HomePage() {
   return (
     <div className="min-h-screen">
       <Navigation />
       <Hero />
-      <HeroImageInstructions />
+      <EventsSection />
+      <ExploreSection />
+      <Footer />
     </div>
   )
 }
