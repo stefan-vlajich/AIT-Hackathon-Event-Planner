@@ -19,7 +19,7 @@ export function Hero() {
       {/* Hero Content - Middle */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="font-arial-black text-8xl md:text-9xl lg:text-[12rem] font-black text-brand-green mb-8">
+          <h1 className="font-arial-black text-8xl md:text-9xl lg:text-[12rem] font-black text-brand-green mb-8 tracking-tighter">
             plan-it
           </h1>
           <p className="font-rubik font-light text-3xl md:text-4xl lg:text-5xl text-brand-green max-w-4xl mx-auto">

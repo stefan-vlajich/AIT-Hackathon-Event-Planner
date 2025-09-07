@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { HomePage, EventsPage, PlannerPage, PartnerPage, AboutPage, SignUpPage, LoginPage, EventDetailPage } from '@/pages'
+import { HomePage, EventsPage, HowItWorksPage, AboutPage, SignUpPage, LoginPage, EventDetailPage } from '@/pages'
 import { AttendeeProfilePage, AttendeeEventsPage, MyEventsPage, EventDetailPage as AttendeeEventDetailPage } from '@/pages/attendee'
 import { PartnerProfilePage, PartnerEventsPage, PartnerDashboardPage, PartnerEventDetailPage } from '@/pages/partner'
 
@@ -9,8 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/planner" element={<PlannerPage />} />
-        <Route path="/partner" element={<PartnerPage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
