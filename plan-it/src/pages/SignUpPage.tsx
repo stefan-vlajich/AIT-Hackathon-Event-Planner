@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { useAuth } from '@/hooks/useSupabase'
+import { supabase } from '@/lib/supabase'
 import heroImage from '@/assets/images/home/hero.png'
 
 export function SignUpPage() {
@@ -22,6 +24,7 @@ export function SignUpPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
+  const { signUp } = useAuth()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -63,14 +66,31 @@ export function SignUpPage() {
     if (!validateForm()) return
 
     setIsLoading(true)
+    setErrors({})
+    
     try {
-      // TODO: Implement actual API call to create user
-      console.log('Form submitted:', formData)
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      navigate('/events')
-    } catch (error) {
-      console.error('Sign up failed:', error)
+      const { data, error } = await signUp(formData.email, formData.password)
+      
+      if (error) {
+        setErrors({ general: error.message })
+      } else if (data.user) {
+        // Redirect based on user type from form
+        switch (formData.userType.toLowerCase()) {
+          case 'planner':
+            navigate('/planner/dashboard')
+            break
+          case 'partner':
+            navigate('/partner/dashboard')
+            break
+          case 'attendee':
+            navigate('/attendee/events')
+            break
+          default:
+            navigate('/events')
+        }
+      }
+    } catch (err) {
+      setErrors({ general: 'An unexpected error occurred. Please try again.' })
     } finally {
       setIsLoading(false)
     }

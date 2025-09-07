@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { useAuth } from '@/hooks/useSupabase'
+import { supabase } from '@/lib/supabase'
 import heroImage from '@/assets/images/home/hero.png'
 
 export function LoginPage() {
@@ -16,6 +18,7 @@ export function LoginPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
+  const { signIn } = useAuth()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -46,14 +49,49 @@ export function LoginPage() {
     if (!validateForm()) return
 
     setIsLoading(true)
+    setErrors({})
+    
     try {
-      // TODO: Implement actual API call to authenticate user
-      console.log('Login attempt:', formData)
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      navigate('/events')
-    } catch (error) {
-      console.error('Login failed:', error)
+      const { data, error } = await signIn(formData.email, formData.password)
+      
+      if (error) {
+        setErrors({ general: error.message })
+      } else if (data.user) {
+        // Get user profile to determine redirect
+        const { data: userProfile, error: profileError } = await supabase
+          .from('app_users')
+          .select(`
+            usertype:usertype_usertypeid (
+              type
+            )
+          `)
+          .eq('auth_user_id', data.user.id)
+          .eq('isactive', true)
+          .single()
+
+        if (profileError) {
+          console.error('Error fetching user profile:', profileError)
+          navigate('/events') // Fallback to events page
+        } else {
+          // Redirect based on user type
+          const userType = userProfile?.usertype?.type?.toLowerCase()
+          switch (userType) {
+            case 'planner':
+              navigate('/planner/dashboard')
+              break
+            case 'partner':
+              navigate('/partner/dashboard')
+              break
+            case 'attendee':
+              navigate('/attendee/events')
+              break
+            default:
+              navigate('/events')
+          }
+        }
+      }
+    } catch (err) {
+      setErrors({ general: 'An unexpected error occurred. Please try again.' })
     } finally {
       setIsLoading(false)
     }
