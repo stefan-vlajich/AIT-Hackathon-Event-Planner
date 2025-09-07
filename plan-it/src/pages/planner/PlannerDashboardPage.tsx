@@ -163,7 +163,10 @@ export function PlannerDashboardPage() {
                 </Button>
               </Link>
               <Link to="/planner/my-events">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+                <Button
+                  variant="outline"
+                  className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                >
                   View All Events
                 </Button>
               </Link>
@@ -351,7 +354,10 @@ export function PlannerDashboardPage() {
                   </CardDescription>
                 </div>
                 <Link to="/planner/partners">
-                  <Button variant="outline" className="border-brand-green text-brand-green hover:bg-brand-green hover:text-black">
+                  <Button
+                    variant="outline"
+                    className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                  >
                     View All Requests
                   </Button>
                 </Link>
@@ -417,13 +423,13 @@ export function PlannerDashboardPage() {
                   </Button>
                 </Link>
                 <Link to="/planner/my-events">
-                  <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 h-20 flex-col">
+                  <Button variant="outline" className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green h-20 flex-col">
                     <Calendar className="w-6 h-6 mb-2" />
                     <span className="font-rubik">Manage Events</span>
                   </Button>
                 </Link>
                 <Link to="/planner/partners">
-                  <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 h-20 flex-col">
+                  <Button variant="outline" className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green h-20 flex-col">
                     <Users className="w-6 h-6 mb-2" />
                     <span className="font-rubik">Partner Requests</span>
                   </Button>

@@ -389,21 +389,21 @@ export function PartnerDashboardPage() {
                 <CardContent className="space-y-3">
                   <Button 
                     variant="outline" 
-                    className="w-full border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                   >
                     <ChartBar className="w-4 h-4 mr-2" />
                     View Analytics
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full border-gray-600 text-gray-300 hover:bg-gray-700"
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                   >
                     <Users className="w-4 h-4 mr-2" />
                     Browse Events
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full border-gray-600 text-gray-300 hover:bg-gray-700"
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                   >
                     <Calendar className="w-4 h-4 mr-2" />
                     Manage Calendar

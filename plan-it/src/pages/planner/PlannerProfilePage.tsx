@@ -110,7 +110,7 @@ export function PlannerProfilePage() {
                 <Button
                   onClick={handleCancel}
                   variant="outline"
-                  className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                  className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                 >
                   <X className="w-4 h-4 mr-2" />
                   Cancel
@@ -502,18 +502,51 @@ export function PlannerProfilePage() {
                           </Button>
                         </Link>
                         <Link to="/planner/my-events">
-                          <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+                          <Button variant="outline" className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green">
                             View My Events
                           </Button>
                         </Link>
                         <Link to="/planner/dashboard">
-                          <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+                          <Button variant="outline" className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green">
                             Dashboard
                           </Button>
                         </Link>
                       </div>
                     </div>
                   )}
+                </CardContent>
+              </Card>
+              <Card className="bg-black/80 border-gray-600 border">
+                <CardHeader>
+                  <CardTitle className="text-xl font-arial-black text-brand-green">
+                    Quick Actions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <Button 
+                    variant="outline" 
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                  >
+                    View Dashboard
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                  >
+                    Manage Events
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                  >
+                    Partner Requests
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
+                  >
+                    View Analytics
+                  </Button>
                 </CardContent>
               </Card>
             </div>

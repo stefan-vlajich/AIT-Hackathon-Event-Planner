@@ -405,13 +405,13 @@ export function PartnerEventDetailPage() {
                     <div className="flex space-x-4 justify-center">
                       <Button 
                         variant="outline"
-                        className="border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                        className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                       >
                         View Dashboard
                       </Button>
                       <Button 
                         variant="outline"
-                        className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                        className="bg-gray-900 border-gray-800 text-white hover:bg-gray-800 hover:text-brand-green"
                       >
                         Browse More Events
                       </Button>
@@ -424,7 +424,7 @@ export function PartnerEventDetailPage() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Opportunity Summary */}
-              <Card className="bg-black/80 border-brand-green border sticky top-24">
+              <Card className="bg-black/80 border-brand-green border">
                 <CardHeader>
                   <CardTitle className="text-lg font-arial-black text-brand-green">
                     Opportunity Summary

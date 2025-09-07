@@ -256,7 +256,7 @@ export function EventDetailPage() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Registration Card */}
-              <Card className="bg-black/80 border-brand-green border sticky top-24">
+              <Card className="bg-black/80 border-brand-green border">
                 <CardContent className="p-6">
                   {/* Registration Status */}
                   {isRegistered ? (
