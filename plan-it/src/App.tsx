@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HomePage, EventsPage, PlannerPage, PartnerPage, AboutPage, SignUpPage, LoginPage, EventDetailPage } from '@/pages'
 import { AttendeeProfilePage, AttendeeEventsPage, MyEventsPage, EventDetailPage as AttendeeEventDetailPage } from '@/pages/attendee'
 import { PartnerProfilePage, PartnerEventsPage, PartnerDashboardPage, PartnerEventDetailPage } from '@/pages/partner'
+import { PlannerProfilePage, PlannerMyEventsPage, PlannerDashboardPage, PlannerPartnersPage, CreateEventPage, EditEventPage } from '@/pages/planner'
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
         <Route path="/partner/events" element={<PartnerEventsPage />} />
         <Route path="/partner/dashboard" element={<PartnerDashboardPage />} />
         <Route path="/partner/event/:eventId" element={<PartnerEventDetailPage />} />
+        
+        {/* Planner Routes */}
+        <Route path="/planner/profile" element={<PlannerProfilePage />} />
+        <Route path="/planner/my-events" element={<PlannerMyEventsPage />} />
+        <Route path="/planner/dashboard" element={<PlannerDashboardPage />} />
+        <Route path="/planner/partners" element={<PlannerPartnersPage />} />
+        <Route path="/planner/create-event" element={<CreateEventPage />} />
+        <Route path="/planner/event/:eventId/edit" element={<EditEventPage />} />
       </Routes>
     </Router>
   )
