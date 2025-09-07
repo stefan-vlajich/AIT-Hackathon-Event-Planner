@@ -3,9 +3,9 @@ import { supabase } from '@/lib/supabase'
 
 // Hook for fetching events with proper schema
 export function useEvents() {
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     fetchEvents()
@@ -74,9 +74,9 @@ export function useEvents() {
 
 // Hook for fetching event categories
 export function useEventCategories() {
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     fetchCategories()
@@ -110,9 +110,9 @@ export function useEventCategories() {
 
 // Hook for user management
 export function useUsers() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     fetchUsers()
@@ -211,9 +211,9 @@ export function useAuth() {
 
 // Hook for getting current user's profile and user type
 export function useCurrentUser() {
-  const [userProfile, setUserProfile] = useState(null)
+  const [userProfile, setUserProfile] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
   const { user } = useAuth()
 
   useEffect(() => {
